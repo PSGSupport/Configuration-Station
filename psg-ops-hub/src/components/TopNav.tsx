@@ -17,8 +17,8 @@ export function TopNav() {
             <Image
               src="/pearl-logo.png"
               alt="Pearl Solutions Group"
-              width={40}
-              height={40}
+              width={52}
+              height={52}
               className="rounded"
             />
             <div>
@@ -27,21 +27,6 @@ export function TopNav() {
               </h1>
             </div>
           </div>
-
-          <nav className="hidden sm:flex items-center gap-6">
-            <a
-              href="#tools"
-              className="text-sm text-[#888899] hover:text-[#00d4ff] transition-colors"
-            >
-              Tools
-            </a>
-            <a
-              href="#help"
-              className="text-sm text-[#888899] hover:text-[#00d4ff] transition-colors"
-            >
-              Help
-            </a>
-          </nav>
 
           <div className="flex items-center gap-2">
             <div className="h-2 w-2 rounded-full bg-green-500 animate-pulse" />
