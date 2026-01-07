@@ -1,17 +1,14 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ExternalLink, ArrowRight, MonitorPlay, CheckCircle2 } from "lucide-react";
+import { ExternalLink, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 interface AppCardProps {
   title: string;
   tagline: string;
-  description: string;
-  features: string[];
   url: string;
-  embedUrl: string;
   accentColor: "blue" | "purple";
   icon: React.ReactNode;
 }
@@ -19,10 +16,7 @@ interface AppCardProps {
 export function AppCard({
   title,
   tagline,
-  description,
-  features,
   url,
-  embedUrl,
   accentColor,
   icon,
 }: AppCardProps) {
@@ -37,82 +31,41 @@ export function AppCard({
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      whileHover={{ y: -4, transition: { duration: 0.2 } }}
+      whileHover={{ y: -6, transition: { duration: 0.2 } }}
       transition={{ duration: 0.5, ease: "easeOut" }}
     >
-      <Card className={`glass-panel ${glowClass} overflow-hidden group`}>
+      <Card className={`glass-panel ${glowClass} overflow-hidden group h-full`}>
         <CardHeader className="pb-4">
-          <div className="flex items-start justify-between">
-            <div className={`p-3 rounded-lg bg-white/5 ${textClass}`}>
-              {icon}
-            </div>
-            <span className={`text-xs px-2 py-1 rounded-full bg-white/5 ${textClass} border border-current/20`}>
-              Active
-            </span>
+          <div className={`p-3 rounded-lg bg-white/5 ${textClass} w-fit`}>
+            {icon}
           </div>
           <CardTitle className="text-xl mt-4 text-white group-hover:text-[#f0f0f5] transition-colors">
             {title}
           </CardTitle>
-          <CardDescription className={`${textClass} font-medium`}>
+          <p className={`${textClass} text-sm font-medium`}>
             {tagline}
-          </CardDescription>
+          </p>
         </CardHeader>
 
-        <CardContent className="space-y-6">
-          <p className="text-sm text-[#888899] leading-relaxed">
-            {description}
-          </p>
-
-          <div className="space-y-2">
-            <h4 className="text-xs font-semibold text-white/60 uppercase tracking-wider">
-              Key Features
-            </h4>
-            <ul className="space-y-2">
-              {features.map((feature, index) => (
-                <motion.li
-                  key={index}
-                  initial={{ opacity: 0, x: -10 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                  className="flex items-center gap-2 text-sm text-[#888899]"
-                >
-                  <CheckCircle2 className={`w-4 h-4 ${textClass} flex-shrink-0`} />
-                  <span>{feature}</span>
-                </motion.li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="flex flex-col sm:flex-row gap-2 pt-4 border-t border-white/5">
+        <CardContent className="pt-2">
+          <div className="flex gap-3">
             <Button
               asChild
               className={`flex-1 ${buttonBg} font-medium`}
             >
               <a href={url} target="_blank" rel="noopener noreferrer">
                 <ExternalLink className="w-4 h-4 mr-2" />
-                Open in New Tab
+                Launch
               </a>
             </Button>
 
             <Button
               asChild
               variant="outline"
-              className={`flex-1 border-white/10 bg-transparent ${hoverBg} text-white`}
+              className={`border-white/10 bg-transparent ${hoverBg} text-white`}
             >
               <a href={url}>
-                <ArrowRight className="w-4 h-4 mr-2" />
-                Open Here
-              </a>
-            </Button>
-
-            <Button
-              asChild
-              variant="ghost"
-              className={`flex-1 ${hoverBg} text-[#888899] hover:text-white`}
-            >
-              <a href={embedUrl}>
-                <MonitorPlay className="w-4 h-4 mr-2" />
-                Embed View
+                <ArrowRight className="w-4 h-4" />
               </a>
             </Button>
           </div>
